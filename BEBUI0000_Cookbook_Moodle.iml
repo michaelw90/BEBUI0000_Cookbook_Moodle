@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="RUBY_MODULE" version="4">
+  <component name="CompassSettings">
+    <option name="compassExecutableFilePath" value="D:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/compass-0.12.2/bin/compass" />
+    <option name="compassSupportEnabled" value="true" />
+  </component>
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$" />
+    <orderEntry type="jdk" jdkName="ruby-1.9.3-p429" jdkType="RUBY_SDK" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" scope="PROVIDED" name="json (v1.8.0, ruby-1.9.3-p429) [gem]" level="application" />
+  </component>
+</module>
+
