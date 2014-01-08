@@ -12,13 +12,13 @@ directory File.dirname(node['cookbook_moodle']['cronic']) do
 end
 
 # Create the cronic file
-template cronic do
+template node['cookbook_moodle']['cronic'] do
   source 'cronic.erb'
   mode '755'
 end
 
 # Deduce the site and data directories
-site_dir = "/home/apps/#{node['cookbook_moodle']['appname']}/current"
+site_dir = "/home/apps/#{node['cookbook_moodle']['appname']}/current/public"
 data_dir = "/home/apps/#{node['cookbook_moodle']['appname']}/shared/data"
 
 # Create the site and data directories with the right permissions
@@ -30,10 +30,27 @@ data_dir = "/home/apps/#{node['cookbook_moodle']['appname']}/shared/data"
   end
 end
 
-# Clone the git repository branch to the site directory
-git site_dir do
-  repository "git://git.moodle.org/moodle.git"
-  reference node[:moodle][:branch]
+if node['cookbook_moodle']['download']
+
+  # Clone the git repository branch to the site directory
+  git site_dir do
+    repository "https://github.com/moodle/moodle.git"
+    reference node['cookbook_moodle']['branch']
+  end
+
+end
+
+# Copy the configuration template into the moodle directory
+template "#{site_dir}/config.php" do
+  source 'config.php.erb'
+  mode '755'
+  variables(
+      :database_user     => node['cookbook_moodle']['database']['username'],
+      :database_password => node['cookbook_moodle']['database']['password'],
+      :database_name => node['cookbook_moodle']['database']['database_name'],
+      :www_root => node['cookbook_moodle']['address'],
+      :data_dir => data_dir
+  )
 end
 
 # Change the owner of the data directory
@@ -44,6 +61,6 @@ end
 # Create a cron job
 cron 'moodle maintenance cron' do
   hour node['cookbook_moodle']['cron_hour']
-  minute 0
+  minute node['cookbook_moodle']['cron_minute']
   command "#{node['cookbook_moodle']['cronic']} php #{site_dir}/admin/cli/cron.php"
 end

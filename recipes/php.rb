@@ -24,14 +24,6 @@ package "php5-intl" do
   action :install
 end
 
-package "php5-mbstring" do
-  action :install
-end
-
-package "php5-soap" do
-  action :install
-end
-
 package "php5-xmlrpc" do
   action :install
 end
