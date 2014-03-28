@@ -15,7 +15,8 @@ end
 # Trying some optimisations, as i'm having trouble with
 # the database being nailed
 node.set['mysql']['tunable']['max_connections']         = '20'
-node.set['mysql']['tunable']['remove_anonymous_users']    = true
+node.set['mysql']['tunable']['remove_anonymous_users']  = true
+node.set['mysql']['tunable']['key_buffer_size']         = '200M'
 
 # Include the mysql recipes
 include_recipe "mysql::server"
