@@ -15,6 +15,10 @@ end
 node.set['mysql']['tunable']['max_allowed_packet']   = '64M'
 node.set['mysql']['tunable']['wait_timeout']         = '600'
 
+# Trying some optimisations, as i'm having trouble with
+# the database being nailed
+node.set['mysql']['tunable']['max_connections']         = '20'
+
 # Include the mysql recipes
 include_recipe "mysql::server"
 include_recipe "mysql::client"
