@@ -6,6 +6,7 @@
 root_password = node['cookbook_moodle']['database']['root_password']
 if root_password
   Chef::Log.info %(Set root password to node['cookbook_moodle']['database']['root_password'])
+  Chef::Log.info root_password
   node.set['mysql']['server_root_password'] = root_password
   node.set['mysql']['server_repl_password'] = root_password
   node.set['mysql']['server_debian_password'] = root_password
@@ -18,6 +19,10 @@ node.set['mysql']['tunable']['wait_timeout']         = '600'
 # Trying some optimisations, as i'm having trouble with
 # the database being nailed
 node.set['mysql']['tunable']['max_connections']         = '20'
+node.set['mysql']['tunable']['remove_anonymous_users']    = true
+#node.set['mysql']['tunable']['query_cache_limit']         = '1M'
+#node.set['mysql']['tunable']['query_cache_size']         = '16M'
+
 
 # Include the mysql recipes
 include_recipe "mysql::server"
