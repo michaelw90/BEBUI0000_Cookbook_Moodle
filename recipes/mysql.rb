@@ -12,17 +12,10 @@ if root_password
   node.set['mysql']['server_debian_password'] = root_password
 end
 
-# Set some mysql properties
-node.set['mysql']['tunable']['max_allowed_packet']   = '64M'
-node.set['mysql']['tunable']['wait_timeout']         = '600'
-
 # Trying some optimisations, as i'm having trouble with
 # the database being nailed
 node.set['mysql']['tunable']['max_connections']         = '20'
 node.set['mysql']['tunable']['remove_anonymous_users']    = true
-#node.set['mysql']['tunable']['query_cache_limit']         = '1M'
-#node.set['mysql']['tunable']['query_cache_size']         = '16M'
-
 
 # Include the mysql recipes
 include_recipe "mysql::server"
