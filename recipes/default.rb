@@ -6,6 +6,11 @@
 moodle_app = {}
 moodle_app['appname'] = node['cookbook_moodle']['appname']
 moodle_app['hostname'] = node['cookbook_moodle']['hostname']
+moodle_app['nginx_config'] = {
+  'template_name' => 'nginx_vhost_moodle.conf.erb',
+  'template_cookbook' => 'cookbook_phpbox'
+}
+
 
 node.set['cookbook_phpbox']['webserver'] = 'nginx'
 node.set['cookbook_phpbox']['apps'] = [moodle_app]
