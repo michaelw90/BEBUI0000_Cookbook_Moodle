@@ -15,4 +15,4 @@ default['cookbook_moodle']['cronic'] = '/opt/bin/cronic'
 default['cookbook_moodle']['cron_hour'] = "*"
 default['cookbook_moodle']['cron_minute'] = "5"
 
-default[:build_essential][:compiletime] = true
+default[:build_essential][:compile_time] = true
