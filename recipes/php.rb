@@ -11,7 +11,8 @@ node.set['php']['directives'] = {
   'register_globals' => 'Off',
   'session.autostart' => 'Off',
   'upload_max_filesize' => '8M',
-  'max_execution_time' => '600'
+  'max_execution_time' => '600',
+  'oci8.statement_cache_size' => 0
 }
 
 package "php5-curl" do
