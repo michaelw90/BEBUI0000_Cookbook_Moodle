@@ -108,14 +108,22 @@ template "#{conf_dir}/php.ini" do
   variables(:directives => directives)
 end
 
-
-
-php_fpm_package_name = 'php5-fpm'
-php_fpm_service_name = 'php5-fpm'
-
-package php_fpm_package_name do
-  action :upgrade
+# Create the fpm directorys
+directory node['cookbook_moodle']['oracle']['php-fpm']['conf_dir'] do
+  action :create
+  recursive true
 end
+directory node['cookbook_moodle']['oracle']['php-fpm']['pool_conf_dir'] do
+  action :create
+  recursive true
+end
+
+#php_fpm_package_name = 'php5-fpm'
+#php_fpm_service_name = 'php5-fpm'
+
+#package php_fpm_package_name do
+  #action :upgrade
+#end
 
 # Create the php-fpm configuration file
 template node['cookbook_moodle']['oracle']['php-fpm']['conf_file'] do
