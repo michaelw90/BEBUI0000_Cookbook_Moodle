@@ -15,20 +15,24 @@ node.set['php']['directives'] = {
   'oci8.statement_cache_size' => 0
 }
 
-package "php5-curl" do
-  action :install
-end
+if node['php']['install_method'] == 'package'
 
-package "php5-gd" do
-  action :install
-end
+  package "php5-curl" do
+    action :install
+  end
 
-package "php5-intl" do
-  action :install
-end
+  package "php5-gd" do
+    action :install
+  end
 
-package "php5-xmlrpc" do
-  action :install
+  package "php5-intl" do
+    action :install
+  end
+
+  package "php5-xmlrpc" do
+    action :install
+  end
+
 end
 
 
