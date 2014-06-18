@@ -15,26 +15,21 @@ node.set['php']['directives'] = {
   'oci8.statement_cache_size' => 0
 }
 
-if node['cookbook_moodle']['database']['type'] == 'mysql'
-
-  package "php5-curl" do
-    action :install
-  end
-
-  package "php5-gd" do
-    action :install
-  end
-
-  package "php5-intl" do
-    action :install
-  end
-
-  package "php5-xmlrpc" do
-    action :install
-  end
-
+package "php5-curl" do
+  action :install
 end
 
+package "php5-gd" do
+  action :install
+end
+
+package "php5-intl" do
+  action :install
+end
+
+package "php5-xmlrpc" do
+  action :install
+end
 
 service "php-fpm" do
   action :restart
