@@ -134,7 +134,7 @@ if node['cookbook_moodle']['oracle']['php-fpm']['pools']
   node['cookbook_moodle']['oracle']['php-fpm']['pools'].each do |params|
     template "#{node['cookbook_moodle']['oracle']['php-fpm']['pool_conf_dir']}/#{params[:name]}.conf" do
       only_if "test -d #{node['cookbook_moodle']['oracle']['php-fpm']['pool_conf_dir']} || mkdir -p #{node['cookbook_moodle']['oracle']['php-fpm']['pool_conf_dir']}"
-      source params[:template]
+      source 'pool.conf.erb'
       owner 'root'
       group 'root'
       mode 00644
