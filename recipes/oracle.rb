@@ -120,7 +120,7 @@ template node['cookbook_moodle']['oracle']['php-fpm']['conf_file'] do
   mode 00644
   owner "root"
   group "root"
-  notifies :restart, "service[php-fpm]"
+  #notifies :restart, "service[php-fpm]"
 end
 
 #service "php-fpm" do
