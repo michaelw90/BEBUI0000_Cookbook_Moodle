@@ -12,6 +12,6 @@ recipe 'cookbook_moodle', 'The Moodle cookbook, a fresh moodle deployment.'
   supports os
 end
 
-%w{git cookbook_phpbox}.each do |cb|
+%w{git magic_shell cookbook_phpbox}.each do |cb|
   depends cb
 end
