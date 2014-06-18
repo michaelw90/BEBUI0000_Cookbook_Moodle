@@ -23,7 +23,7 @@ node.set['php-fpm']['pools'] = [
 ]
 
 include_recipe "git"
-if node['cookbook_moodle']['database']['type'] = 'oracle'
+if node['cookbook_moodle']['database']['type'] == 'oracle'
   include_recipe "cookbook_moodle::oracle"
 end
 include_recipe "cookbook_phpbox"
