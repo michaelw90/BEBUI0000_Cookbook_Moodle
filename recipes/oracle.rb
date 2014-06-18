@@ -47,7 +47,7 @@ magic_shell_environment 'ORACLE_HOME' do
 end
 
 node.set['php']['install_method'] = 'source'
-node.set['php']['configure_options'] = %W{--prefix=/usr/local
+node.set['php']['configure_options'] = %W{--prefix=/usr/local/php5513
                                          --with-libdir=lib
                                          --with-config-file-path=/etc/php5/cli
                                          --with-config-file-scan-dir=/etc/php5/conf.d
@@ -78,11 +78,5 @@ node.set['php']['configure_options'] = %W{--prefix=/usr/local
                                          --with-mcrypt
                                          --enable-mbstring
                                          --with-t1lib
-                                         --with-mysql
-                                         --with-mysqli=/usr/bin/mysql_config
-                                         --with-mysql-sock
-                                         --with-sqlite3
-                                         --with-pdo-mysql
-                                         --with-pdo-sqlite
                                          --enable-intl
                                          --with-pdo-oci=instantclient,/usr/lib/oracle/instantclient_12_1,12.1}
