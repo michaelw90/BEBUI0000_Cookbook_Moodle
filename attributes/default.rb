@@ -21,6 +21,25 @@ default['cookbook_moodle']['oracle']['basic_zip'] = 'instantclient-basic-linux.x
 default['cookbook_moodle']['oracle']['sdk_zip'] = 'instantclient-sdk-linux.x64-12.1.0.1.0.zip'
 default['cookbook_moodle']['oracle']['folder_name'] = 'instantclient_12_1'
 default['cookbook_moodle']['oracle']['version'] = default['cookbook_moodle']['oracle']['basic_rpm'].split('-')[1].sub(/instantclient/, '')
+
+default['cookbook_moodle']['oracle']['php-fpm']['user'] = 'www-data'
+default['cookbook_moodle']['oracle']['php-fpm']['group'] = 'www-data'
+default['cookbook_moodle']['oracle']['php-fpm']['conf_dir'] = '/etc/php5/fpm/conf.d'
+default['cookbook_moodle']['oracle']['php-fpm']['pool_conf_dir'] = '/etc/php5/fpm/pool.d'
+default['cookbook_moodle']['oracle']['php-fpm']['conf_file'] = '/etc/php5/fpm/php-fpm.conf'
+default['cookbook_moodle']['oracle']['php-fpm']['error_log'] = '/var/log/php5-fpm.log'
+default['cookbook_moodle']['oracle']['php-fpm']['pid'] = '/var/run/php5-fpm.pid'
+default['cookbook_moodle']['oracle']['php-fpm']['log_level'] = "notice"
+default['cookbook_moodle']['oracle']['php-fpm']['emergency_restart_threshold'] = 0
+default['cookbook_moodle']['oracle']['php-fpm']['emergency_restart_interval'] = 0
+default['cookbook_moodle']['oracle']['php-fpm']['process_control_timeout'] = 0
+default['cookbook_moodle']['oracle']['php-fpm']['pools'] = [
+    {
+        :name => "www"
+    }
+]
+default['cookbook_moodle']['oracle']['php-fpm']['yum_url'] = "http://rpms.famillecollet.com/enterprise/$releasever/remi/$basearch/"
+default['cookbook_moodle']['oracle']['php-fpm']['yum_mirrorlist'] = "http://rpms.famillecollet.com/enterprise/$releasever/remi/mirror"
 default['cookbook_moodle']['oracle']['php']['bin'] = 'php'
 default['cookbook_moodle']['oracle']['php']['version'] = '5.5.13'
 default['cookbook_moodle']['oracle']['php']['url'] = 'http://us1.php.net/get'

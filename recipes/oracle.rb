@@ -104,3 +104,62 @@ template "#{conf_dir}/php.ini" do
   mode '0644'
   variables(:directives => directives)
 end
+
+
+
+php_fpm_package_name = 'php5-fpm'
+php_fpm_service_name = 'php5-fpm'
+
+package php_fpm_package_name do
+  action :upgrade
+end
+
+# Create the php-fpm configuration file
+template node['cookbook_moodle']['oracle']['php-fpm']['conf_file'] do
+  source "php-fpm.conf.erb"
+  mode 00644
+  owner "root"
+  group "root"
+  notifies :restart, "service[php-fpm]"
+end
+
+#service "php-fpm" do
+  #provider ::Chef::Provider::Service::Upstart
+  #service_name php_fpm_service_name
+  #supports :start => true, :stop => true, :restart => true, :reload => true
+  #action [ :enable, :start ]
+#end
+
+if node['cookbook_moodle']['oracle']['php-fpm']['pools']
+  node['cookbook_moodle']['oracle']['php-fpm']['pools'].each do |params|
+    template "#{node['cookbook_moodle']['oracle']['php-fpm']['pool_conf_dir']}/#{params[:name]}.conf" do
+      only_if "test -d #{node['cookbook_moodle']['oracle']['php-fpm']['pool_conf_dir']} || mkdir -p #{node['cookbook_moodle']['oracle']['php-fpm']['pool_conf_dir']}"
+      source params[:template]
+      owner 'root'
+      group 'root'
+      mode 00644
+      cookbook params[:cookbook] || 'php-fpm'
+      variables(
+        :pool_name => params[:name],
+        :listen => params[:listen],
+        :listen_owner => params[:listen_owner] || node['cookbook_moodle']['oracle']['php-fpm']['listen_owner'],
+        :listen_group => params[:listen_group] || node['cookbook_moodle']['oracle']['php-fpm']['listen_group'],
+        :listen_mode => params[:listen_mode] || node['cookbook_moodle']['oracle']['php-fpm']['listen_mode'],
+        :allowed_clients => params[:allowed_clients],
+        :user => params[:user],
+        :group => params[:group],
+        :process_manager => params[:process_manager],
+        :max_children => params[:max_children],
+        :start_servers => params[:start_servers],
+        :min_spare_servers => params[:min_spare_servers],
+        :max_spare_servers => params[:max_spare_servers],
+        :max_requests => params[:max_requests],
+        :catch_workers_output => params[:catch_workers_output],
+        :security_limit_extensions => params[:security_limit_extensions] || node['cookbook_moodle']['oracle']['php-fpm']['security_limit_extensions'],
+        :php_options => params[:php_options] || {},
+        :params => params
+      )
+    end
+  end
+  notifies :restart, "service[php-fpm]"
+end
