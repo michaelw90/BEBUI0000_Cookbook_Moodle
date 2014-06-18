@@ -34,9 +34,10 @@ default['cookbook_moodle']['oracle']['php-fpm']['emergency_restart_threshold'] =
 default['cookbook_moodle']['oracle']['php-fpm']['emergency_restart_interval'] = 0
 default['cookbook_moodle']['oracle']['php-fpm']['process_control_timeout'] = 0
 default['cookbook_moodle']['oracle']['php-fpm']['pools'] = [
-    {
-        :name => "www"
-    }
+  {
+    :name => "www",
+    :listen => "127.0.0.1:9001"
+  }
 ]
 default['cookbook_moodle']['oracle']['php-fpm']['yum_url'] = "http://rpms.famillecollet.com/enterprise/$releasever/remi/$basearch/"
 default['cookbook_moodle']['oracle']['php-fpm']['yum_mirrorlist'] = "http://rpms.famillecollet.com/enterprise/$releasever/remi/mirror"

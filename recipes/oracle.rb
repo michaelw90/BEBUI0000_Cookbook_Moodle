@@ -3,6 +3,9 @@
 # Recipe:: oracle
 #
 
+# Disable the install of php from phpbox
+node.set["cookbook_phpbox"]["php"] = false
+
 configure_options = node['cookbook_moodle']['oracle']['php']['configure_options'].join(' ')
 bin = node['cookbook_moodle']['oracle']['php']['bin']
 version = node['cookbook_moodle']['oracle']['php']['version']
