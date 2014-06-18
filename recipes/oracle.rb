@@ -161,5 +161,5 @@ if node['cookbook_moodle']['oracle']['php-fpm']['pools']
       )
     end
   end
-  notifies :restart, "service[php-fpm]"
+  #notifies :restart, "service[php-fpm]"
 end
