@@ -9,8 +9,8 @@ version = node['cookbook_moodle']['oracle']['php']['version']
 php_url = node['cookbook_moodle']['oracle']['php']['url']
 conf_dir = node['cookbook_moodle']['oracle']['php']['conf_dir']
 ext_conf_dir = node['cookbook_moodle']['oracle']['php']['ext_conf_dir']
-template = default['cookbook_moodle']['oracle']['php']['template']
-directives = default['cookbook_moodle']['oracle']['php']['directives']
+template = node['cookbook_moodle']['oracle']['php']['template']
+directives = node['cookbook_moodle']['oracle']['php']['directives']
 ext_dir_prefix = ''
 
 include_recipe 'build-essential'
