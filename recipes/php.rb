@@ -15,7 +15,7 @@ node.set['php']['directives'] = {
   'oci8.statement_cache_size' => 0
 }
 
-if node['php']['install_method'] == 'package'
+if node['cookbook_moodle']['database']['type'] = 'mysql'
 
   package "php5-curl" do
     action :install
