@@ -24,9 +24,9 @@ default['cookbook_moodle']['oracle']['version'] = default['cookbook_moodle']['or
 
 default['cookbook_moodle']['oracle']['php-fpm']['user'] = 'www-data'
 default['cookbook_moodle']['oracle']['php-fpm']['group'] = 'www-data'
-default['cookbook_moodle']['oracle']['php-fpm']['conf_dir'] = '/etc/php5/fpm/conf.d'
-default['cookbook_moodle']['oracle']['php-fpm']['pool_conf_dir'] = '/etc/php5/fpm/pool.d'
-default['cookbook_moodle']['oracle']['php-fpm']['conf_file'] = '/etc/php5/fpm/php-fpm.conf'
+default['cookbook_moodle']['oracle']['php-fpm']['conf_dir'] = '/usr/local/php5/fpm/conf.d'
+default['cookbook_moodle']['oracle']['php-fpm']['pool_conf_dir'] = '/usr/local/php5/fpm/pool.d'
+default['cookbook_moodle']['oracle']['php-fpm']['conf_file'] = '/usr/local/php5/fpm/php-fpm.conf'
 default['cookbook_moodle']['oracle']['php-fpm']['error_log'] = '/var/log/php5-fpm.log'
 default['cookbook_moodle']['oracle']['php-fpm']['pid'] = '/var/run/php5-fpm.pid'
 default['cookbook_moodle']['oracle']['php-fpm']['log_level'] = "notice"
