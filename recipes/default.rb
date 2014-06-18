@@ -26,13 +26,11 @@ include_recipe "git"
 if node['cookbook_moodle']['database']['type'] == 'oracle'
   include_recipe "cookbook_moodle::oracle"
 end
-if node['cookbook_moodle']['database']['type'] == 'mysql'
-  include_recipe "cookbook_phpbox"
-end
+include_recipe "cookbook_phpbox"
 include_recipe "cookbook_moodle::users"
-include_recipe "cookbook_moodle::php"
 
 if node['cookbook_moodle']['database']['type'] == 'mysql'
+  include_recipe "cookbook_moodle::php"
   include_recipe "cookbook_moodle::mysql"
 end
 include_recipe "cookbook_moodle::moodle"
