@@ -79,4 +79,5 @@ node.set['php']['configure_options'] = %W{--prefix=/usr/local
                                          --enable-mbstring
                                          --with-t1lib
                                          --enable-intl
+                                         --with-oci8=instantclient,/usr/lib/oracle/instantclient_12_1
                                          --with-pdo-oci=instantclient,/usr/lib/oracle/instantclient_12_1,12.1}
