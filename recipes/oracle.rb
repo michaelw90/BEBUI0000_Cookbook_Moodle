@@ -47,6 +47,8 @@ magic_shell_environment 'ORACLE_HOME' do
 end
 
 node.set['php']['install_method'] = 'source'
+node.set['php']['pear'] = '/usr/local/php5513/bin/pear'
+node.set['php']['pecl'] = '/usr/local/php5513/bin/pecl'
 node.set['php']['configure_options'] = %W{--prefix=/usr/local/php5513
                                          --with-libdir=lib
                                          --with-config-file-path=/etc/php5/cli
