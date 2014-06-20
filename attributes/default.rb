@@ -89,6 +89,7 @@ default['cookbook_moodle']['oracle']['php']['configure_options'] = %W{--prefix=#
                                                                      --enable-mbstring
                                                                      --with-t1lib
                                                                      --enable-pdo
+                                                                     --with-pdo-mysql
                                                                      --with-oci8=instantclient,/usr/lib/oracle/instantclient_12_1
                                                                      --with-pdo-oci=instantclient,/usr/lib/oracle/instantclient_12_1,12.1}
 
