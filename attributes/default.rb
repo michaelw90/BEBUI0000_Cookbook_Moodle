@@ -89,11 +89,11 @@ default['cookbook_moodle']['oracle']['php']['configure_options'] = %W{--prefix=#
                                                                      --with-mcrypt
                                                                      --enable-mbstring
                                                                      --with-t1lib
+                                                                     --enable-pdo
+                                                                     --with-pdo-mysql
+                                                                     --with-pdo-sqlite
+                                                                     --with-sqlite
                                                                      --with-oci8=instantclient,/usr/lib/oracle/instantclient_12_1
-                                                                     --enable-pdo=shared
-                                                                     --with-pdo-mysql=shared
-                                                                     --with-pdo-sqlite=shared
-                                                                     --with-sqlite=shared
-                                                                     --with-pdo-oci=shared,instantclient,/usr/lib/oracle/instantclient_12_1,12.1}
+                                                                     --with-pdo-oci=instantclient,/usr/lib/oracle/instantclient_12_1,12.1}
 
 default[:build_essential][:compile_time] = true
