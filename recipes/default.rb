@@ -29,8 +29,11 @@ end
 include_recipe "cookbook_phpbox"
 include_recipe "cookbook_moodle::users"
 
-if node['cookbook_moodle']['database']['type'] == 'mysql'
+if node['cookbook_moodle']['database']['type'] != 'oracle'
   include_recipe "cookbook_moodle::php"
+end
+
+if node['cookbook_moodle']['database']['type'] == 'mysql'
   include_recipe "cookbook_moodle::mysql"
 end
 include_recipe "cookbook_moodle::moodle"

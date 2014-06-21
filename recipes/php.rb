@@ -12,6 +12,7 @@ node.set['php']['directives'] = {
   'session.autostart' => 'Off',
   'upload_max_filesize' => '8M',
   'max_execution_time' => '600',
+  'opcache.enable' => '1',
   'oci8.statement_cache_size' => 0
 }
 
