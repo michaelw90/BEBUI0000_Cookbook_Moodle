@@ -54,7 +54,7 @@ default['cookbook_moodle']['oracle']['php']['directives'] = {
                                                               'magic_quotes_gpc' => 'Off',
                                                               'register_globals' => 'Off',
                                                               'session.autostart' => 'Off',
-                                                              'upload_max_filesize' => '8M',
+                                                              'upload_max_filesize' => '25M',
                                                               'max_execution_time' => '600',
                                                               'oci8.statement_cache_size' => 0
                                                             }
