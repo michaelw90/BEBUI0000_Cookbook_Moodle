@@ -23,6 +23,7 @@ node.set['php']['directives'] = {
     'register_globals' => 'Off',
     'session.autostart' => 'Off',
     'upload_max_filesize' => '25M',
+    'post_max_size' => '25M',
     'max_execution_time' => '600',
     'opcache.enable' => '1',
     'oci8.statement_cache_size' => 0
