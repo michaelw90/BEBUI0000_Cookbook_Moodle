@@ -3,6 +3,7 @@
 # Recipe:: default
 #
 
+include_recipe 'apt'
 include_recipe 'git'
 include_recipe 'appbox'
 include_recipe 'cookbook_moodle::users'
