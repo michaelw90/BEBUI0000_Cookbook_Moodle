@@ -32,7 +32,19 @@ node.set['php']['directives'] = {
 node.set['php-fpm']['pools'] = [
   {
     :name => "www",
-    :listen => "127.0.0.1:9001"
+    :listen => "127.0.0.1:9001",
+    :php_options => {
+      'php_admin_value[date.timezone]' => 'Europe/London',
+      'php_admin_flag[short_open_tag]' => 'off',
+      'php_admin_flag[magic_quotes_gpc]' => 'off',
+      'php_admin_flag[register_globals]' => 'off',
+      'php_admin_flag[session.autostart]' => 'off',
+      'php_admin_value[upload_max_filesize]' => '50M',
+      'php_admin_value[post_max_size]' => '50M',
+      'php_admin_value[max_execution_time]' => 600,
+      'php_admin_value[opcache.enable]' => 1,
+      'php_admin_value[oci8.statement_cache_size]' => 0
+    }
   }
 ]
 
