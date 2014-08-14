@@ -8,7 +8,7 @@
 ::Chef::Recipe.send(:include, PHPBox::Helpers)
 
 # Set the initialisation style for nginx
-set['nginx']['init_style'] = "init"
+node.set['nginx']['init_style'] = "init"
 
 # Install nginx from source
 include_recipe "nginx::source"
