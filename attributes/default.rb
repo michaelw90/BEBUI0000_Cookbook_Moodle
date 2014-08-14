@@ -25,7 +25,7 @@ default['cookbook_moodle']['htpasswd']['username'] = ''
 default['cookbook_moodle']['htpasswd']['password'] = ''
 default['cookbook_moodle']['htpasswd']['path'] = ''
 
-default["databox"]["databases"] = {}
+default['cookbook_moodle']['newrelic']['license_key'] = ''
 
 default['build-essential']['compile_time'] = true
 
