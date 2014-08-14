@@ -30,16 +30,6 @@ data_dir = "/home/apps/#{node['cookbook_moodle']['appname']}/shared/data"
   end
 end
 
-if node['cookbook_moodle']['download']
-
-  # Clone the git repository branch to the site directory
-  git site_dir do
-    repository "https://github.com/moodle/moodle.git"
-    reference node['cookbook_moodle']['branch']
-  end
-
-end
-
 # Copy the configuration template into the moodle directory
 template "#{site_dir}/config.php" do
   source 'config.php.erb'

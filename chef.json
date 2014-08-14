@@ -9,7 +9,6 @@
   "cookbook_moodle": {
     "appname": "moodle",
     "hostname": "localhost",
-    "download": false,
     "database": {
       "root_password": "6YbnV=23TRyYm",
       "database_name": "moodle",
