@@ -4,7 +4,7 @@ maintainer_email 'fred.thompson@buildempire.co.uk'
 license          'Apache 2.0'
 description      'The Moodle cookbook, a fresh moodle deployment'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          '0.5.4'
+version          '0.5.5'
 
 recipe 'cookbook_moodle', 'The Moodle cookbook, a fresh moodle deployment.'
 
@@ -12,6 +12,6 @@ recipe 'cookbook_moodle', 'The Moodle cookbook, a fresh moodle deployment.'
   supports os
 end
 
-%w{apt build-essential appbox database git magic_shell nginx php php-fpm htpasswd xml}.each do |cb|
+%w{apt build-essential appbox database git magic_shell newrelic nginx php php-fpm htpasswd xml}.each do |cb|
   depends cb
 end
