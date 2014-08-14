@@ -11,6 +11,8 @@ if node['cookbook_moodle']['newrelic']
     node.set['newrelic']['php-agent']['web_server']['service_name'] = 'nginx'
     include_recipe 'newrelic::repository'
     include_recipe 'newrelic::server-monitor-agent'
-    include_recipe 'newrelic::php-agent'
+    # PHP Agent doesnt seem to work as of yet with Ubuntu 11.04.
+    # It asks for a version of newrelic-php5 that doesnt exist.
+    #include_recipe 'newrelic::php-agent'
   end
 end
