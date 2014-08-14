@@ -10,6 +10,10 @@ default['cookbook_moodle']['database']['database_name'] = 'moodle'
 default['cookbook_moodle']['database']['username'] = 'moodle'
 default['cookbook_moodle']['database']['password'] = ''
 
+default["cookbook_moodle"]["default_config"]["nginx"]["template_name"] = "nginx_vhost.conf.erb"
+default["cookbook_moodle"]["default_config"]["nginx"]["template_cookbook"] = "cookbook_moodle"
+default["cookbook_moodle"]["default_config"]["nginx"]["listen_port"] = "80"
+
 default['cookbook_moodle']['cronic'] = '/opt/bin/cronic'
 default['cookbook_moodle']['cron_hour'] = "*"
 default['cookbook_moodle']['cron_minute'] = "*/5"

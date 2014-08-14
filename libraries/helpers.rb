@@ -3,13 +3,13 @@ module PHPBox
 
     def setup_nginx_site(app, app_dir)
       config = merge_nginx_config(
-        node["cookbook_phpbox"]["default_config"]["nginx"],
+        node["cookbook_moodle"]["default_config"]["nginx"],
         app["nginx_config"]
       )
 
-      htpasswd_username = node['cookbook_phpbox']['htpasswd']['username']
-      htpasswd_password = node['cookbook_phpbox']['htpasswd']['password']
-      htpasswd_path = node['cookbook_phpbox']['htpasswd']['path']
+      htpasswd_username = node['cookbook_moodle']['htpasswd']['username']
+      htpasswd_password = node['cookbook_moodle']['htpasswd']['password']
+      htpasswd_path = node['cookbook_moodle']['htpasswd']['path']
       if htpasswd_username == '' || htpasswd_password == ''
         htpasswd_path = ''
       end

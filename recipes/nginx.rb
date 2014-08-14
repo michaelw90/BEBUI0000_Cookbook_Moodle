@@ -17,10 +17,5 @@ include_recipe "nginx::source"
 app = {}
 app['appname'] = node['cookbook_moodle']['appname']
 app['hostname'] = node['cookbook_moodle']['hostname']
-app['nginx_config'] = {
-    'template_name' => 'nginx_vhost_moodle.conf.erb',
-    'template_cookbook' => 'cookbook_moodle',
-    'listen_port' => "80"
-}
 app_dir = ::File.join(node['appbox']['apps_dir'], app['appname'], 'current')
 setup_nginx_site(app, app_dir)
