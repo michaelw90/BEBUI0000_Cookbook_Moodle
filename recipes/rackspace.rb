@@ -13,40 +13,72 @@ if node['cookbook_moodle']['rackspace']
   rackspace_backup = node['cookbook_moodle']['rackspace']['backup']
   rackspace_backup_container = node['cookbook_moodle']['rackspace']['backup_container']
 
-  if rackspace_monitoring == true && rackspace_username != '' && rackspace_api_key != '' && rackspace_auth_region != ''
+  if rackspace_username != '' && rackspace_api_key
 
-    gem_package "fog" do
-      action :install
+    node.set['rackspace']['cloud_credentials']['username'] = rackspace_username
+    node.set['rackspace']['cloud_credentials']['api_key'] = rackspace_api_key
+
+    if rackspace_monitoring == true
+
+      #gem_package "fog" do
+        #action :install
+      #end
+
+      #require 'fog'
+
+      # Calculate default values
+      # Critical at x4 CPU count
+      cpu_critical_threshold = (node['cpu']['total'] * 4)
+      # Warning at x2 CPU count
+      cpu_warning_threshold = (node['cpu']['total'] * 2)
+
+      # Define our monitors
+      node.set['rackspace_cloudmonitoring']['monitors'] = {
+          'cpu' =>  { 'type' => 'agent.cpu', },
+          'load' => { 'type'  => 'agent.load_average',
+                      'alarm' => {
+                          'CRITICAL' => { 'conditional' => "metric['5m'] > #{cpu_critical_threshold}", },
+                          'WARNING'  => { 'conditional' => "metric['5m'] > #{cpu_warning_threshold}", },
+                      },
+          },
+
+          'disk' => {
+              'type' => 'agent.disk',
+              'details' => { 'target' => '/dev/xvda1'},
+          },
+          'root_filesystem' => {
+              'type' => 'agent.filesystem',
+              'details' => { 'target' => '/'},
+          },
+
+          'web_check' => {
+              'type' => 'remote.http',
+              'target_hostname' => node['fqdn'],
+              'monitoring_zones_poll' => [
+                  'mzdfw',
+                  'mziad',
+                  'mzord'
+              ],
+              'details' => {
+                  "url" => "http://#{node['ipaddress']}/",
+                  "method" => "GET"
+              }
+          }
+      }
+      include_recipe "rackspace_cloudmonitoring::monitors"
+
     end
 
-    require 'fog'
+    if rackspace_backup == true
 
-    node.set['cloud_monitoring']['rackspace_username'] = rackspace_username
-    node.set['cloud_monitoring']['rackspace_api_key'] = rackspace_api_key
-    node.set['cloud_monitoring']['rackspace_auth_region'] = rackspace_auth_region
-    include_recipe 'cloud_monitoring::agent'
-  end
+      node.set['rackspace_cloudbackup']['backups_defaults']['cloud_notify_email'] = 'fred.thompson@buildempire.co.uk'
+      node.set['rackspace_cloudbackup']['backups'] =
+        [
+          { location: '/home' }
+        ]
+      include_recipe 'rackspace-cloud-backup::cloud'
 
-  if rackspace_backup == true && rackspace_username != '' && rackspace_api_key != '' && rackspace_endpoint != '' && rackspace_backup_container != ''
-
-    node.set['rackspace_cloud_backup']['rackspace_username'] = rackspace_username
-    node.set['rackspace_cloud_backup']['rackspace_apikey'] = rackspace_api_key
-    node.set['rackspace_cloud_backup']['rackspace_endpoint'] = rackspace_endpoint
-
-    node.set['rackspace_cloud_backup']['backup_cron_hour'] = '20'
-    node.set['rackspace_cloud_backup']['backup_cron_day'] = '*'
-    node.set['rackspace_cloud_backup']['backup_cron_weekday'] = '*'
-    node.set['rackspace_cloud_backup']['backup_cron_month'] = '*'
-    node.set['rackspace_cloud_backup']['backup_cron_minute'] = '30'
-    node.set['rackspace_cloud_backup']['backup_cron_user'] = 'root'
-
-    node.set['rackspace_cloud_backup']['backup_container'] = rackspace_backup_container
-    node.set['rackspace_cloud_backup']['cloud_notify_email'] = 'fred.thompson@buildempire.co.uk'
-    node.set['rackspace_cloud_backup']['backup_locations'] = [
-      "/home"
-    ]
-
-    include_recipe 'rackspace-cloud-backup::cloud'
+    end
 
   end
 
