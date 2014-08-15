@@ -76,7 +76,7 @@ if node['cookbook_moodle']['rackspace']
         [
           { location: '/home' }
         ]
-      include_recipe 'rackspace-cloud-backup::cloud'
+      include_recipe 'rackspace_cloudbackup'
 
     end
 
