@@ -17,6 +17,9 @@ template node['cookbook_moodle']['cronic'] do
   mode '755'
 end
 
+# Deduce the site and data directories
+site_dir = "/home/apps/#{node['cookbook_moodle']['appname']}/current/public"
+data_dir = "/home/apps/#{node['cookbook_moodle']['appname']}/shared/data"
 
 # Create a cron job
 cron 'moodle maintenance cron' do
@@ -27,10 +30,6 @@ end
 
 # Only create the directories and ocnfig file if we're localhost.
 if node['cookbook_moodle']['hostname'] == 'localhost'
-
-  # Deduce the site and data directories
-  site_dir = "/home/apps/#{node['cookbook_moodle']['appname']}/current/public"
-  data_dir = "/home/apps/#{node['cookbook_moodle']['appname']}/shared/data"
 
   # Create the site and data directories with the right permissions
   [site_dir, data_dir].each do |dir|
