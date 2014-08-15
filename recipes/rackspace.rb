@@ -35,7 +35,17 @@ if node['cookbook_moodle']['rackspace']
       # Define our monitors
       node.set['rackspace_cloudmonitoring']['monitors'] = {
           'cpu' =>  { 'type' => 'agent.cpu', },
-          'load' => { 'type'  => 'agent.load_average'},
+          'load' => { 'type'  => 'agent.load_average',
+                      'alarm' => {
+                          'notification_plan_id' => 'npTechnicalContactsEmail',
+                          'CRITICAL' => {
+                              'conditional' => "metric['5m'] > #{cpu_critical_threshold}",
+                          },
+                          'WARNING'  => {
+                              'conditional' => "metric['5m'] > #{cpu_warning_threshold}",
+                          },
+                      },
+          },
 
           'disk' => {
               'type' => 'agent.disk',

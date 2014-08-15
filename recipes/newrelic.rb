@@ -14,7 +14,6 @@ if node['cookbook_moodle']['newrelic']
     node.set['newrelic']['server_monitoring']['license'] = newrelic_licence_key
     node.set['newrelic']['application_monitoring']['license'] = newrelic_licence_key
     node.set['newrelic']['plugin_monitoring']['license'] = newrelic_licence_key
-
     node.set['newrelic']['install_dir'] = '/opt/newrelic'
     node.set['newrelic']['php-agent']['web_server']['service_name'] = 'nginx'
     include_recipe 'newrelic::repository'
