@@ -5,7 +5,7 @@
 
 if node['cookbook_moodle']['newrelic']
   newrelic_licence_key = node['cookbook_moodle']['newrelic']['license_key']
-  if newrelic_licence_key
+  if newrelic_licence_key != nil
 
     Chef::Log.info %(Set newrelic license to node['cookbook_moodle']['newrelic']['license_key'])
     Chef::Log.info newrelic_licence_key
