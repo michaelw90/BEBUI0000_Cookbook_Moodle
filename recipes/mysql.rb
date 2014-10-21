@@ -12,12 +12,6 @@ if root_password
   node.set['mysql']['server_debian_password'] = root_password
 end
 
-# Trying some optimisations, as i'm having trouble with
-# the database being nailed
-node.set['mysql']['tunable']['max_connections']         = '20'
-node.set['mysql']['tunable']['remove_anonymous_users']  = true
-node.set['mysql']['tunable']['key_buffer_size']         = '50M'
-
 # Include the mysql recipes
 include_recipe "mysql::server"
 include_recipe "mysql::client"
@@ -43,4 +37,12 @@ mysql_database_user node['cookbook_moodle']['database']['username'] do
   password(node['cookbook_moodle']['database']['password'])
 end
 
-
+template '/etc/mysql/conf.d/mysite.cnf' do
+  owner 'mysql'
+  owner 'mysql'
+  source 'mysite.cnf.erb'
+  variables(
+      :max_allowed_packet => node['cookbook_moodle']['mysql']['max_allowed_packet']
+  )
+  notifies :restart, 'mysql_service[default]'
+end

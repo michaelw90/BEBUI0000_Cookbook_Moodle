@@ -21,6 +21,8 @@ default['cookbook_moodle']['cron_minute'] = "*/5"
 default["cookbook_moodle"]['php_packages'] = []
 default["cookbook_moodle"]['php_pears'] = []
 
+default['cookbook_moodle']['mysql']['max_allowed_packet'] = '128M'
+
 default['cookbook_moodle']['htpasswd']['username'] = ''
 default['cookbook_moodle']['htpasswd']['password'] = ''
 default['cookbook_moodle']['htpasswd']['path'] = ''
