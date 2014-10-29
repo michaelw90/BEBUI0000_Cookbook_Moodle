@@ -1,5 +1,6 @@
 default['cookbook_moodle']['appname'] = 'moodle'
 default['cookbook_moodle']['hostname'] = 'localhost'
+default['cookbook_moodle']['listen_port'] = '80'
 default['cookbook_moodle']['user'] = 'www-data'
 default['cookbook_moodle']['group'] = 'www-data'
 default['cookbook_moodle']['address'] = 'http://localhost'
