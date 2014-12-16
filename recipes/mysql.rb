@@ -8,6 +8,8 @@ if root_password
   Chef::Log.info %(Set root password to node['cookbook_moodle']['database']['root_password'])
   Chef::Log.info root_password
 
+  include_recipe "database::mysql"
+
   # Include the mysql recipes
   mysql_service 'default' do
     initial_root_password root_password
@@ -17,8 +19,6 @@ if root_password
   mysql_client 'default' do
     action :create
   end
-
-  include_recipe "database::mysql"
 
   # Setup the connection information
   mysql_connection_info = {
