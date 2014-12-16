@@ -17,17 +17,17 @@ include_recipe "mysql::server"
 include_recipe "mysql::client"
 include_recipe "database::mysql"
 
-/**
-# Include the mysql recipes
-mysql_service 'default' do
-  initial_root_password root_password
-  action [:create, :start]
-end
 
-mysql_client 'default' do
-  action :create
-end
-*/
+# Include the mysql recipes
+##mysql_service 'default' do
+##  initial_root_password root_password
+##  action [:create, :start]
+##end
+
+##mysql_client 'default' do
+##  action :create
+##end
+
 
 # Setup the connection information
 mysql_connection_info = {
