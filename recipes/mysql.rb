@@ -31,7 +31,7 @@ include_recipe "database"
 
 # Setup the connection information
 mysql_connection_info = {
-    :host => '127.0.0.1',
+    :host => node['cookbook_moodle']['database']['host'],
     :username => 'root',
     :password => root_password
 }
