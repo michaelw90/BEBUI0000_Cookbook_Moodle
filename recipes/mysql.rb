@@ -15,8 +15,6 @@ end
 # Include the mysql recipes
 #include_recipe "mysql::server"
 #include_recipe "mysql::client"
-include_recipe "database::mysql"
-
 
 # Include the mysql recipes
 mysql_service 'default' do
@@ -27,6 +25,8 @@ end
 mysql_client 'default' do
   action :create
 end
+
+include_recipe "database"
 
 
 # Setup the connection information
