@@ -6,7 +6,7 @@ default['cookbook_moodle']['group'] = 'www-data'
 default['cookbook_moodle']['address'] = 'http://localhost'
 
 default['cookbook_moodle']['database']['type'] = 'mysql'
-default['cookbook_moodle']['database']['host'] = '127.0.0.1'
+default['cookbook_moodle']['database']['host'] = 'localhost'
 default['cookbook_moodle']['database']['root_password'] = nil
 default['cookbook_moodle']['database']['database_name'] = 'moodle'
 default['cookbook_moodle']['database']['username'] = 'moodle'
