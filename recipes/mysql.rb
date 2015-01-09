@@ -15,7 +15,7 @@ end
 # Include the mysql recipes
 include_recipe "mysql::server"
 include_recipe "mysql::client"
-include_recipe "database:mysql"
+include_recipe "database::mysql"
 
 # Include the mysql recipes
 #mysql_service 'default' do
