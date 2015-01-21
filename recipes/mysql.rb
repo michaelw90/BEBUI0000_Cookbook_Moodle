@@ -13,19 +13,20 @@ if root_password
 end
 
 # Include the mysql recipes
-include_recipe "mysql::server"
-include_recipe "mysql::client"
-include_recipe "database::mysql"
+#include_recipe "mysql::server"
+#include_recipe "mysql::client"
 
 # Include the mysql recipes
-#mysql_service 'default' do
-  #initial_root_password root_password
-  #action [:create, :start]
-#end
+mysql_service 'default' do
+  initial_root_password root_password
+  action [:create, :start]
+end
 
-#mysql_client 'default' do
-  #action :create
-#end
+mysql_client 'default' do
+  action :create
+end
+
+include_recipe "database::mysql"
 
 # Setup the connection information
 mysql_connection_info = {
