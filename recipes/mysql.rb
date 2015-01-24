@@ -12,18 +12,20 @@ if root_password
   node.set['mysql']['server_debian_password'] = root_password
 end
 
-# Include the mysql recipes
-#include_recipe "mysql::server"
-#include_recipe "mysql::client"
+# Set the mysql version we want
+node.set['mysql']['version'] = node["cookbook_moodle"]["mysql_version"]
 
-# Include the mysql recipes
+# Install the MySQL service
 mysql_service 'default' do
   initial_root_password root_password
+  version node["mysql"]["version"]
   action [:create, :start]
 end
 
+# Install the MySQL Client
 mysql_client 'default' do
   action :create
+  version node["mysql"]["version"]
 end
 
 include_recipe "database::mysql"
