@@ -41,6 +41,7 @@ mysql_database_user node['cookbook_moodle']['database']['username'] do
   connection mysql_connection_info
   action [:create, :grant]
   host(node['cookbook_moodle']['database']['host'])
+  privileges [:all]
   password(node['cookbook_moodle']['database']['password'])
 end
 
