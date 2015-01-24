@@ -4,13 +4,6 @@
 #
 
 root_password = node['cookbook_moodle']['database']['root_password']
-if root_password
-  Chef::Log.info %(Set root password to node['cookbook_moodle']['database']['root_password'])
-  Chef::Log.info root_password
-  node.set['mysql']['server_root_password'] = root_password
-  node.set['mysql']['server_repl_password'] = root_password
-  node.set['mysql']['server_debian_password'] = root_password
-end
 
 # Set the mysql version we want
 node.set['mysql']['version'] = node["cookbook_moodle"]["mysql_version"]
