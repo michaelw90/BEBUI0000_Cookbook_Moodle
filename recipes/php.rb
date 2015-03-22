@@ -17,8 +17,8 @@ node.set['php']['directives'] = {
     'oci8.statement_cache_size' => 0
 }
 
-node.set['php-fpm']['pools'] = [
-    {
+node.set['php-fpm']['pools'] = {
+  "www" => {
         :name => "www",
         :listen => "127.0.0.1:9001",
         :php_options => {
@@ -34,8 +34,7 @@ node.set['php-fpm']['pools'] = [
             'php_admin_value[oci8.statement_cache_size]' => 0
         }
     }
-]
-
+}
 
 include_recipe "php"
 include_recipe "php-fpm"
