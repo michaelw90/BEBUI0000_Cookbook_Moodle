@@ -11,6 +11,8 @@ symlinked_folder = ::File.join(node['appbox']['apps_dir'], node['cookbook_moodle
 directory symlinked_folder do
   owner 'vagrant'
   group 'vagrant'
+  action :create
+  recursive true
 end
 
 # Loop through the symlniks. They need to be relative to the project folder, and they link to the symlink folder above.
@@ -31,6 +33,8 @@ Array(node['cookbook_moodle']['symlinks']).each_with_index do |relative_folder, 
   directory destination_folder do
     owner 'vagrant'
     group 'vagrant'
+    action :create
+    recursive true
   end
 
   # Create the symbolic link
