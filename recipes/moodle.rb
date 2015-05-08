@@ -45,17 +45,19 @@ if node['cookbook_moodle']['hostname'] == 'localhost'
     www_root += ":#{node['cookbook_moodle']['listen_port']}"
   end
 
-  # Copy the configuration template into the moodle directory
-  template "#{site_dir}/config.php" do
-    source 'config.php.erb'
-    mode '755'
-    variables(
-        :database_user     => node['cookbook_moodle']['database']['username'],
-        :database_password => node['cookbook_moodle']['database']['password'],
-        :database_name => node['cookbook_moodle']['database']['database_name'],
-        :www_root => www_root,
-        :data_dir => data_dir
-    )
+  if node['cookbook_moodle']['generate_config']
+    # Copy the configuration template into the moodle directory
+    template "#{site_dir}/config.php" do
+      source 'config.php.erb'
+      mode '755'
+      variables(
+          :database_user     => node['cookbook_moodle']['database']['username'],
+          :database_password => node['cookbook_moodle']['database']['password'],
+          :database_name => node['cookbook_moodle']['database']['database_name'],
+          :www_root => www_root,
+          :data_dir => data_dir
+      )
+    end
   end
 
   # Change the owner of the data directory

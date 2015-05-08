@@ -4,6 +4,7 @@ default['cookbook_moodle']['listen_port'] = '80'
 default['cookbook_moodle']['user'] = 'www-data'
 default['cookbook_moodle']['group'] = 'www-data'
 default['cookbook_moodle']['address'] = 'http://localhost'
+default['cookbook_moodle']['generate_config'] = false
 
 default['cookbook_moodle']['database']['type'] = 'mysql'
 default['cookbook_moodle']['database']['host'] = '127.0.0.1'
