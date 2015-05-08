@@ -22,8 +22,11 @@ default['cookbook_moodle']['cronic'] = '/opt/bin/cronic'
 default['cookbook_moodle']['cron_hour'] = "*"
 default['cookbook_moodle']['cron_minute'] = "*/5"
 
-default["cookbook_moodle"]['php_packages'] = []
-default["cookbook_moodle"]['php_pears'] = []
+default['cookbook_moodle']['nodejs']['version'] = '0.12.0'
+
+default['cookbook_moodle']['php_packages'] = []
+default['cookbook_moodle']['php_pears'] = []
+default['cookbook_moodle']['npm_packages'] = []
 
 default['cookbook_moodle']['mysql']['max_allowed_packet'] = '128M'
 
