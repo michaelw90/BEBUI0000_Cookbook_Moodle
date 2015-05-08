@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="RUBY_MODULE" version="4">
   <component name="CompassSettings">
-    <option name="compassExecutableFilePath" value="D:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/compass-0.12.2/bin/compass" />
+    <option name="compassExecutableFilePath" value="C:/Programs/Ruby/ruby-1.9.3-p429/lib/ruby/gems/1.9.1/gems/compass-0.12.6/bin/compass" />
   </component>
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
@@ -11,4 +11,3 @@
     <orderEntry type="library" scope="PROVIDED" name="json (v1.8.1, ruby-1.9.3-p429) [gem]" level="application" />
   </component>
 </module>
-
