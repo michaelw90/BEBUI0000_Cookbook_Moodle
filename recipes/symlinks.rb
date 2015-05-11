@@ -42,7 +42,7 @@ Array(node['cookbook_moodle']['symlinks']).each_with_index do |relative_folder, 
     owner 'vagrant'
     group 'vagrant'
     to destination_folder
-    not_if "test -dL #{source_folder}"
+    not_if "test -d #{source_folder}"
   end
 
 end
