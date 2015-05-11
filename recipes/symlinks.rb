@@ -26,7 +26,7 @@ Array(node['cookbook_moodle']['symlinks']).each_with_index do |relative_folder, 
   directory source_folder do
     recursive true
     action :delete
-    not_if "test -L #{source_folder}"
+    not_if "test -dL #{source_folder}"
   end
 
   # Ensure the destination folder does exist
@@ -42,6 +42,7 @@ Array(node['cookbook_moodle']['symlinks']).each_with_index do |relative_folder, 
     owner 'vagrant'
     group 'vagrant'
     to destination_folder
+    not_if "test -dL #{source_folder}"
   end
 
 end
