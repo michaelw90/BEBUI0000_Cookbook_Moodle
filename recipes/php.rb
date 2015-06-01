@@ -14,7 +14,8 @@ node.set['php']['directives'] = {
     'post_max_size' => '100M',
     'max_execution_time' => '600',
     'opcache.enable' => '1',
-    'oci8.statement_cache_size' => 0
+    'oci8.statement_cache_size' => 0,
+    'cgi.fix_pathinfo' => 0
 }
 
 node.set['php-fpm']['pools'] = {
@@ -31,7 +32,8 @@ node.set['php-fpm']['pools'] = {
             'php_admin_value[post_max_size]' => '100M',
             'php_admin_value[max_execution_time]' => 600,
             'php_admin_value[opcache.enable]' => 1,
-            'php_admin_value[oci8.statement_cache_size]' => 0
+            'php_admin_value[oci8.statement_cache_size]' => 0,
+            'php_admin_value[cgi.fix_pathinfo]' => 0
         }
     }
 }
