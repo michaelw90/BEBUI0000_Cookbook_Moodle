@@ -21,6 +21,7 @@ module PHPBox
         owner     "root"
         group     "root"
         variables(
+          :app_dir        => app_dir,
           :root_path      => ::File.join(app_dir, 'public'),
           :log_dir        => node["nginx"]["log_dir"],
           :appname        => app["appname"],

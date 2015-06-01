@@ -70,6 +70,11 @@ server {
 
     }
 
+    location /dataroot/ {
+        internal;
+        alias <%= @app_dir %>/shared/data;
+    }
+
 }
 upstream backend {
     server 127.0.0.1:9001;
