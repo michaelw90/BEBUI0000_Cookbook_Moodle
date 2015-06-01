@@ -19,5 +19,5 @@ app['appname'] = node['cookbook_moodle']['appname']
 app['hostname'] = node['cookbook_moodle']['hostname']
 app['nginx_config'] = {}
 app['nginx_config']['listen_port'] = node['cookbook_moodle']['listen_port']
-app_dir = ::File.join(node['appbox']['apps_dir'], app['appname'], 'current')
+app_dir = ::File.join(node['appbox']['apps_dir'], app['appname'])
 setup_nginx_site(app, app_dir)

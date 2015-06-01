@@ -7,6 +7,8 @@ module PHPBox
         app["nginx_config"]
       )
 
+      current_dir = File.join(app_dir, 'current')
+
       htpasswd_username = node['cookbook_moodle']['htpasswd']['username']
       htpasswd_password = node['cookbook_moodle']['htpasswd']['password']
       htpasswd_path = node['cookbook_moodle']['htpasswd']['path']
@@ -22,7 +24,7 @@ module PHPBox
         group     "root"
         variables(
           :app_dir        => app_dir,
-          :root_path      => ::File.join(app_dir, 'public'),
+          :root_path      => ::File.join(current_dir, 'public'),
           :log_dir        => node["nginx"]["log_dir"],
           :appname        => app["appname"],
           :hostname       => app["hostname"],
