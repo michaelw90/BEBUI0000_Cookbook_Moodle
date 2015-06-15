@@ -23,7 +23,8 @@ default['cookbook_moodle']['cronic'] = '/opt/bin/cronic'
 default['cookbook_moodle']['cron_hour'] = "*"
 default['cookbook_moodle']['cron_minute'] = "*/5"
 
-default['cookbook_moodle']['nodejs']['version'] = '0.12.0'
+default['cookbook_moodle']['nodejs']['version'] = '0.12.4'
+default['cookbook_moodle']['nodejs']['checksum'] = '3298d0997613a04ac64343e8316da134d04588132554ae402eb344e3369ec912'
 
 default['cookbook_moodle']['php_packages'] = []
 default['cookbook_moodle']['php_pears'] = []

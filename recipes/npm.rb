@@ -3,8 +3,12 @@
 # Recipe:: npm
 #
 
-# Set the node version
+# Install from source
+node.set['nodejs']['install_method'] = 'source'
+
+# Set the node version and checksum
 node.set['nodejs']['version'] = node['cookbook_moodle']['nodejs']['version']
+node.set['nodejs']['source']['checksum'] = node['cookbook_moodle']['nodejs']['checksum']
 
 # Install npm itself
 include_recipe 'nodejs::npm'
