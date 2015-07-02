@@ -31,6 +31,12 @@ server {
 
     location ~ [^/]\.php(/|$) {
 
+<% if @htpasswd_path != "" -%>
+        auth_basic "Restricted";
+        auth_basic_user_file <%= @htpasswd_path %>;
+        try_files $uri $uri/ /index.html;
+<% end -%>
+
         fastcgi_split_path_info ^(.+\.php)(/.+)$;
         fastcgi_pass   backend;
         fastcgi_index  index.php;
