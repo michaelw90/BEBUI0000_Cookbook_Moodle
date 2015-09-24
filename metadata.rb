@@ -12,6 +12,6 @@ recipe 'cookbook_moodle', 'The Moodle cookbook, a fresh moodle deployment.'
   supports os
 end
 
-%w{apt build-essential appbox database git htpasswd magic_shell newrelic nodejs nginx php php-fpm rackspace_cloudbackup rackspace_cloudmonitoring xml}.each do |cb|
+%w{mysql2_chef_gem apt build-essential appbox database git htpasswd magic_shell newrelic nodejs nginx php php-fpm rackspace_cloudbackup rackspace_cloudmonitoring xml}.each do |cb|
   depends cb
 end
