@@ -36,7 +36,7 @@ default['cookbook_moodle']['htpasswd']['username'] = ''
 default['cookbook_moodle']['htpasswd']['password'] = ''
 default['cookbook_moodle']['htpasswd']['path'] = ''
 
-default['cookbook_moodle']['symlinks'] = []
+default['cookbook_moodle']['symlinks'] = nil
 
 default['cookbook_moodle']['newrelic']['license_key'] = nil
 
