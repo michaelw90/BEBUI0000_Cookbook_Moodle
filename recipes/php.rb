@@ -45,6 +45,10 @@ node.set['php-fpm']['pools'] = {
 include_recipe "php"
 include_recipe "php-fpm"
 
+package "php5-memcached" do
+  action :install
+end
+
 package "php5-curl" do
   action :install
 end
