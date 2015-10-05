@@ -51,3 +51,4 @@ default['cookbook_moodle']['rackspace']['backup_container'] = ''
 default['build-essential']['compile_time'] = true
 
 default['cookbook_moodle']['aws']['efs'] = ''
+default['cookbook_moodle']['aws']['elasticache'] = ''
