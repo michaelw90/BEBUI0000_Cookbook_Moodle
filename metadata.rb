@@ -8,6 +8,8 @@ version          '1.0.9'
 
 recipe 'cookbook_moodle', 'The Moodle cookbook, a fresh moodle deployment.'
 
+depends "cookbook_acorn"
+
 %w{ ubuntu }.each do |os|
   supports os
 end
