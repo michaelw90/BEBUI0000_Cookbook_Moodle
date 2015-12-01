@@ -11,9 +11,6 @@
 node.set['nginx']['init_style'] = "init"
 
 # Install nginx from source
-include_recipe "cookbook_acorn"
-
-# Install nginx from source
 include_recipe "nginx::source"
 
 # Setup the nginx site configuration
