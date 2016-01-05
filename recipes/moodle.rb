@@ -18,8 +18,8 @@ template node['cookbook_moodle']['cronic'] do
 end
 
 # Deduce the site and data directories
-site_dir = "/home/apps/#{node['cookbook_moodle']['appname']}/current/public"
-data_dir = "/home/apps/#{node['cookbook_moodle']['appname']}/shared/data"
+site_dir = "#{node['cookbook_moodle']['appdir']}/#{node['cookbook_moodle']['appname']}/current/public"
+data_dir = "#{node['cookbook_moodle']['appdir']}/#{node['cookbook_moodle']['appname']}/shared/data"
 
 # Create a cron job
 cron 'moodle maintenance cron' do

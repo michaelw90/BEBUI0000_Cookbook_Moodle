@@ -1,4 +1,5 @@
 default['cookbook_moodle']['appname'] = 'moodle'
+default['cookbook_moodle']['appdir'] = '/home/apps'
 default['cookbook_moodle']['hostname'] = 'localhost'
 default['cookbook_moodle']['listen_port'] = '80'
 default['cookbook_moodle']['user'] = 'www-data'
@@ -51,4 +52,3 @@ default['cookbook_moodle']['rackspace']['backup_container'] = ''
 default['build-essential']['compile_time'] = true
 
 default['cookbook_moodle']['aws']['efs'] = ''
-default['cookbook_moodle']['aws']['elasticache'] = ''
