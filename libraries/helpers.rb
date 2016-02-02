@@ -32,6 +32,7 @@ module PHPBox
           :listen_port    => config["listen_port"],
           :ssl_key        => config["ssl_key"],
           :ssl_cert       => config["ssl_cert"],
+          :https          => config["https"],
           :htpasswd_path  => htpasswd_path
         )
         notifies :reload, "service[nginx]"
