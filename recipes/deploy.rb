@@ -24,6 +24,6 @@ node[:deploy].each do |application, deploy|
 
   execute "build LESS" do
     cwd "#{deploy[:current_path]}/public/theme/innovators"
-    execute "npm install && npm install -g grunt-cli && grunt less"
+    command "npm install && npm install -g grunt-cli && grunt less"
   end
 end
