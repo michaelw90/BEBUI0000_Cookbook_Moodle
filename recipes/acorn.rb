@@ -25,7 +25,7 @@ node[:deploy].each do |application, deploy|
 
   execute "build LESS" do
     cwd "#{deploy[:current_path]}/public/local/acornapi/endpoint"
-    command "composer install"
+    command "sudo composer install"
   end
 
 end
