@@ -21,5 +21,11 @@ node[:deploy].each do |application, deploy|
     deploy_data deploy
     app application
   end
+  
+
+  execute "build LESS" do
+    cwd "#{deploy[:current_path]}/public/local/acornapi/endpoint"
+    command "composer install"
+  end
 
 end
