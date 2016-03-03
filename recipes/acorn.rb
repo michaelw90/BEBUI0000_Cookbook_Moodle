@@ -28,4 +28,9 @@ node[:deploy].each do |application, deploy|
     command "sudo composer install"
   end
 
+  execute "Run Composer Install" do
+    cwd "#{deploy[:current_path]}/../shared"
+    command "sudo mkdir -p public/data && chown deploy:www-data -R public"
+  end
+
 end
