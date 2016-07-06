@@ -25,7 +25,7 @@ class OpsWorksMemcached {
 }
 
 class OpsWorks {
-  public $db, $memcached, $stack_name, $domain, $https;
+  public $db, $memcached, $stack_name, $domain, $https, $pusher;
   private $stack_map;
 
   public function __construct() {
@@ -35,6 +35,21 @@ class OpsWorks {
     $this->stack_name = '<%= @stack_name %>';
     $this->domain = '<%= @environment_variables[:domain] %>';
     $this->https = '<%= @environment_variables[:https] %>';
+
+<% if @environment_variables[:pusher] -%>
+    $this->pusher = (object) [
+      'appKey'    => '<%= @environment_variables[:pusher_appKey] %>',
+      'appSecret' => '<%= @environment_variables[:pusher_appSecret] %>',
+      'appId'     => <%= @environment_variables[:pusher_appId] %>,
+      'options'   => [
+          'cluster'   => '<%= @environment_variables[:pusher_cluster] %>',
+          'encrypted' => true,
+      ],
+      'logging'   => false,
+    ];
+<% else -%>
+    $this->pusher = false;
+<% end -%>
   }
 
   public function layers() {
