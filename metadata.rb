@@ -14,6 +14,6 @@ depends "cookbook_acorn"
   supports os
 end
 
-%w{apt build-essential appbox git htpasswd magic_shell newrelic nodejs nginx php php-fpm xml}.each do |cb|
+%w{apt build-essential appbox git htpasswd magic_shell nodejs nginx php php-fpm xml}.each do |cb|
   depends cb
 end
