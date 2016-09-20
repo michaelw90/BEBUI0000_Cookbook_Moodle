@@ -16,11 +16,12 @@ class OpsWorksDb {
 }
 
 class OpsWorksMemcached {
-  public $host, $port;
+  public $host, $port, $prefix;
 
   public function __construct() {
     $this->host = '<%= @memcached[:host] %>';
     $this->port = '<%= @memcached[:port] %>';
+    $this->prefix = '<%= @memcached[:prefix] %>';
   }
 }
 
