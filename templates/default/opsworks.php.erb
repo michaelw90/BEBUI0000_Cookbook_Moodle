@@ -36,6 +36,7 @@ class OpsWorks {
     $this->stack_name = '<%= @stack_name %>';
     $this->domain = '<%= @environment_variables[:domain] %>';
     $this->https = '<%= @environment_variables[:https] %>';
+    $this->jwplayer = '<%= @environment_variables[:jwplayer] %>';
 
 <% if @environment_variables[:pusher] -%>
     $this->pusher = (object) [
